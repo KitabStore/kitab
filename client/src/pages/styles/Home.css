@@ -1,0 +1,110 @@
+.background{
+    background: url('../../resources/img/wallpaper.jpg') rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+  }
+  div{
+    user-select: none;
+  }
+
+  .category :hover{
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #about{
+    backdrop-filter: blur(10);
+  }
+  .no-wrap{
+    white-space: nowrap;
+  }
+  @keyframes fadeIn {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 100%;
+    }
+  }
+  .fadeIn{
+    animation: fadeIn 0.5 ease-out none both;
+  }
+
+  @keyframes slidedown {
+    from{
+      transform: translateY(-40px);
+      opacity: 0%;
+    }
+    to{
+      transform: translateY(0);
+      opacity: 100%;
+    }
+  }
+  .animate-down1{
+    animation-name: slidedown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  .animate-down2{
+    opacity: 0;
+    animation-name: slidedown;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+  }
+  .animate-down3{
+    animation-name: slidedown;
+    animation-duration: 1s;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+  }
+  @keyframes jiggle {
+    from{
+      transform: translateY(-5px);
+    }
+    50%{
+      transform: translateY(0);
+    }
+    to{
+      transform: translateY(-5px);
+    }
+
+  }
+  .animate-arrow{
+    animation: jiggle;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+  }
+  @keyframes slideup {
+    from{
+      transform: translateY(100px);
+      opacity: 0%;
+    }
+    to{
+      transform: translateY(0);
+      opacity: 100%;
+    }
+  }
+  .animate-up{
+    animation-name: slideup;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  .go-top{
+    position: sticky;
+    width: fit-content;
+    bottom: 20px;
+    left: 20px;
+  }
+  .animate-top{
+    animation: slideup 0.5s both;
+    animation-delay: 0.2s;
+  }
+  .quote-load{
+    height: 90vw;
+  }

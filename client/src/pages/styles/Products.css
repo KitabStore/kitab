@@ -1,0 +1,42 @@
+.body{
+    background-color: black;
+}
+.loaded{
+    transition: all 0.3s;
+}
+.loaded:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.card-img-top:hover{
+    opacity: 80%;
+}
+input[type="radio"] {
+    display: none;
+}
+input[type="radio"] + label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+input[type="radio"] + label:before{
+    content: "";
+    position: absolute;
+    left:0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #343a40;
+    border-radius: 50%;
+}
+input[type="radio"]:checked + label:before{
+    background-color: white;
+}
+.product-placeholder:hover{
+    cursor: wait;
+}
+.image-placeholder{
+    height: 250px;
+}

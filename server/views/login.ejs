@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login page</title>
+    </head>
+    <body>
+        <header>
+            <h1>this is the login page</h1>
+            <a href="/">home</a>
+            <a href="/login">login</a>
+            <a href="/signup">signin</a>
+            <a href="/logout">logout</a>
+        </header>
+        <div class="loginForm">
+            <form action="/login" method="post">
+                <label for="femail">username:</label>
+                <input type="text" id="femail" name="username" placeholder="Your email.."><br>
+                <p class="emailError"></p><br>
+            
+                <label for="lpassword">password:</label>
+                <input type="password" id="lpassword" name="password" placeholder="Your password.."><br>
+                <p class="passwordError"></p><br>
+                <button>login</button>
+              </form>
+        </div>  
+        <script></script>
+    </body>
+</html>

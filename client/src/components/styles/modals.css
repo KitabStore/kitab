@@ -1,0 +1,7 @@
+.btn:hover{
+    color: white;
+}
+.create:hover{
+    cursor: pointer;
+    color: gray;
+}

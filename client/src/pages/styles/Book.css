@@ -1,0 +1,17 @@
+.book-cover{
+    width: 250px;
+}
+.cover-img{
+    border-radius: 0 10px 10px 0;
+}
+.btn{
+    color: white;
+    transition: all 0.5s;
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+.card-text{
+    margin-left: 5%;
+}

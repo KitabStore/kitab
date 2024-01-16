@@ -1,0 +1,78 @@
+GET http://localhost:8080/getAllcategories
+ 
+###
+GET http://localhost:8080/getAllbooks  
+
+###
+GET http://localhost:8080/getbooks/fiction 
+
+###
+GET http://localhost:8080/getBooks/female/6
+
+###
+POST http://localhost:8080/getBooks
+Content-Type: application/json
+ 
+{
+      
+}
+
+###
+POST http://localhost:8080/addBook
+Content-Type: application/json
+ 
+{
+    "name":"ddddd"
+}
+
+###
+POST http://localhost:8080/signup
+Content-Type: application/json
+       
+{
+    "username": "mahmoud",
+    "phone":"03445566",
+    "location":"tripoli",
+    "email":"m@hotmail.com",
+    "password": "123456"   
+}
+
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{ 
+
+    "username":"mahmoud",
+    "password":"123456"
+} 
+
+###
+GET http://localhost:8080/logout
+
+###
+GET http://localhost:8080/search/daring
+
+###
+
+POST  http://localhost:8080/search
+Content-Type: application/json
+
+{ 
+
+    "input":"p"
+} 
+
+###
+GET http://localhost:8080/getbook/4  
+
+###
+POST http://localhost:8080/cart
+Content-Type: application/json
+      
+{  
+ 
+    "id":"4",
+    "quantity":"2"
+}

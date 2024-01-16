@@ -1,0 +1,10 @@
+.current{
+    opacity: 70%;
+}
+.page-link{
+    transition: all 0.5s;
+}
+.page-link:hover{
+    cursor: pointer;
+    opacity: 80%;
+}

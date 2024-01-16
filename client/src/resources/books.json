@@ -1,0 +1,322 @@
+[
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "isbn": "0451524934",
+    "quantity": 8,
+    "price": 12.50,
+    "category": "fiction"
+  },
+  {
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "isbn": "9780553380163",
+    "quantity": 12,
+    "price": 16.50,
+    "category": "non-fiction"
+  },
+  {
+    "title": "A Game of Thrones",
+    "author": "George R.R. Martin",
+    "isbn": "0553593714",
+    "quantity": 24,
+    "price": 23.50,
+    "category": "fiction"
+  },
+  {
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "isbn": "0735211299",
+    "quantity": 22,
+    "price": 16.75,
+    "category": "self-help"
+  },
+  {
+    "title": "Awaken the Giant Within",
+    "author": "Tony Robbins",
+    "isbn": "0743409388",
+    "quantity": 16,
+    "price": 21.99,
+    "category": "self-help"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "isbn": "0060850523",
+    "quantity": 12,
+    "price": 15.50,
+    "category": "fiction"
+  },
+  {
+    "title": "Cosmos",
+    "author": "Carl Sagan",
+    "isbn": "0345539435",
+    "quantity": 15,
+    "price": 18.99,
+    "category": "non-fiction"
+  },
+  {
+    "title": "Daring Greatly",
+    "author": "Brené Brown",
+    "isbn": "1592408419",
+    "quantity": 18,
+    "price": 14.75,
+    "category": "self-help"
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "isbn": "1451673310",
+    "quantity": 14,
+    "price": 13.99,
+    "category": "fiction"
+  },
+  {
+    "title": "Genome: The Autobiography of a Species in 23 Chapters",
+    "author": "Matt Ridley",
+    "isbn": "0060894083",
+    "quantity": 19,
+    "price": 16.99,
+    "category": "non-fiction"
+  },
+  {
+    "title": "Guns, Germs, and Steel",
+    "author": "Jared Diamond",
+    "isbn": "0393317552",
+    "quantity": 14,
+    "price": 20.50,
+    "category": "non-fiction"
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "isbn": "059035342X",
+    "quantity": 25,
+    "price": 16.50,
+    "category": "fiction"
+  },
+  {
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "isbn": "0671027034",
+    "quantity": 18,
+    "price": 12.50,
+    "category": "self-help"
+  },
+  {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "isbn": "0141441143",
+    "quantity": 16,
+    "price": 11.75,
+    "category": "fiction"
+  },
+  {
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "isbn": "1853260088",
+    "quantity": 11,
+    "price": 19.50,
+    "category": "fiction"
+  },
+  {
+    "title": "Mindset: The New Psychology of Success",
+    "author": "Carol S. Dweck",
+    "isbn": "0345472322",
+    "quantity": 25,
+    "price": 19.99,
+    "category": "self-help"
+  },
+  {
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel Garcia Marquez",
+    "isbn": "006112009X",
+    "quantity": 17,
+    "price": 14.50,
+    "category": "fiction"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "0141439513",
+    "quantity": 18,
+    "price": 11.99,
+    "category": "fiction"
+  },
+  {
+    "title": "Silent Spring",
+    "author": "Rachel Carson",
+    "isbn": "0618249060",
+    "quantity": 17,
+    "price": 13.99,
+    "category": "non-fiction"
+  },
+  {
+    "title": "Sapiens: A Brief History of Humankind",
+    "author": "Yuval Noah Harari",
+    "isbn": "0062316095",
+    "quantity": 20,
+    "price": 21.99,
+    "category": "non-fiction"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "isbn": "0316769487",
+    "quantity": 12,
+    "price": 13.25,
+    "category": "fiction"
+  },
+  {
+    "title": "The Chronicles of Narnia",
+    "author": "C.S. Lewis",
+    "isbn": "0066238501",
+    "quantity": 13,
+    "price": 21.99,
+    "category": "fiction"
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "isbn": "0385504209",
+    "quantity": 22,
+    "price": 17.25,
+    "category": "fiction"
+  },
+  {
+    "title": "The Double Helix",
+    "author": "James D. Watson",
+    "isbn": "074321630X",
+    "quantity": 22,
+    "price": 15.99,
+    "category": "non-fiction"
+  },
+  {
+    "title": "The Emperor of All Maladies",
+    "author": "Siddhartha Mukherjee",
+    "isbn": "1439170916",
+    "quantity": 16,
+    "price": 17.25,
+    "category": "non-fiction"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "0743273567",
+    "quantity": 15,
+    "price": 14.75,
+    "category": "fiction"
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "isbn": "0618260307",
+    "quantity": 20,
+    "price": 19.99,
+    "category": "fiction"
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "isbn": "0439023521",
+    "quantity": 30,
+    "price": 14.99,
+    "category": "fiction"
+  },
+  {
+    "title": "The Immortal Life of Henrietta Lacks",
+    "author": "Rebecca Skloot",
+    "isbn": "1400052181",
+    "quantity": 25,
+    "price": 19.50,
+    "category": "non-fiction"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "isbn": "0618640150",
+    "quantity": 15,
+    "price": 24.99,
+    "category": "fiction"
+  },
+  {
+    "title": "The Power of Now",
+    "author": "Eckhart Tolle",
+    "isbn": "1577314808",
+    "quantity": 15,
+    "price": 23.50,
+    "category": "self-help"
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "isbn": "0307387895",
+    "quantity": 10,
+    "price": 16.99,
+    "category": "fiction"
+  },
+  {
+    "title": "The Selfish Gene",
+    "author": "Richard Dawkins",
+    "isbn": "0198788606",
+    "quantity": 18,
+    "price": 14.75,
+    "category": "non-fiction"
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "isbn": "9780451193889",
+    "quantity": 8,
+    "price": 18.75,
+    "category": "fiction"
+  },
+  {
+    "title": "The Subtle Art of Not Giving a F*ck",
+    "author": "Mark Manson",
+    "isbn": "0062457713",
+    "quantity": 20,
+    "price": 17.50,
+    "category": "self-help"
+  },
+  {
+    "title": "The 7 Habits of Highly Effective People",
+    "author": "Stephen R. Covey",
+    "isbn": "9780743269513",
+    "quantity": 20,
+    "price": 14.99,
+    "category": "self-help"
+  },
+  {
+    "title": "The Outsiders",
+    "author": "S.E. Hinton",
+    "isbn": "014038572X",
+    "quantity": 9,
+    "price": 12.99,
+    "category": "fiction"
+  },
+  {
+    "title": "Think and Grow Rich",
+    "author": "Napoleon Hill",
+    "isbn": "1585424331",
+    "quantity": 14,
+    "price": 18.99,
+    "category": "self-help"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "isbn": "0061120081",
+    "quantity": 10,
+    "price": 15.99,
+    "category": "fiction"
+  },
+  {
+    "title": "You Are a Badass",
+    "author": "Jen Sincero",
+    "isbn": "0762447699",
+    "quantity": 12,
+    "price": 15.99,
+    "category": "self-help"
+  }
+]

@@ -1,0 +1,51 @@
+#header{
+  transition: all 0.5s;
+}
+.auth{
+  border-radius: 20px;
+  color: white;
+}
+.auth:nth-child(1){
+  border: 1px solid white;
+}
+.auth:nth-child(1):hover{
+  background-color: white;
+  color: black;
+}
+.auth:nth-child(2):hover{
+  background-color: white;
+  color: black;
+}
+
+@media(max-width: 768px){
+  .sidebar{
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+  }
+}
+
+.link{
+  color: white;
+}
+.link:hover{
+  color: gray;
+}
+
+input, textarea{
+  opacity: 80%;
+}
+
+@keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 80%;
+  }
+}
+.animate-falldown{
+  animation: fade 5s both;
+}
+body.modal-open{
+  overflow-y: 'auto' !important;
+}
