@@ -44,7 +44,7 @@ const Products = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         if(category !== "all"){
-            fetch('/postBooks', {
+            fetch('https://kitab-server.onrender.com/postBooks', {
                 method: 'POST',
                 headers:{
                     'Content-type': "application/json"
