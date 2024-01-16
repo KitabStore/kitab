@@ -1,7 +1,7 @@
 {
   "name": "kitab",
   "version": "0.1.0",
-  "proxy": "https://kitab-server.onrender.com:8080",
+  "proxy": "https://kitab-server.onrender.com",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
