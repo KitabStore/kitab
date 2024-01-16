@@ -14,8 +14,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(express.json());
 
-app.listen(8080, () => {
-    console.log('Server started on port 8080');
+let port = 8080;
+
+app.listen(port, () => {
+    console.log('Server started on port',port);
   });
 
 app.get("/",(req,res)=>{
