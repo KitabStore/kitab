@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Pagination from '../components/Pagination';
 import ProductsPlaceholder from '../components/ProductsPlaceholder';
+import apiUrl from '../apiConfig';
 
 const Products = () => {
 
@@ -32,7 +33,7 @@ const Products = () => {
         setCurrentPage(1);
     }
     useEffect(() => {
-        fetch(`/search/${search}`)
+        fetch(`${apiUrl}/search/${search}`)
             .then(res => res.json())
             .then(data => {
                 setBooks(data.data)
@@ -44,7 +45,7 @@ const Products = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         if(category !== "all"){
-            fetch('/postBooks', {
+            fetch(`${apiUrl}/postBooks`, {
                 method: 'POST',
                 headers:{
                     'Content-type': "application/json"
@@ -61,7 +62,7 @@ const Products = () => {
                 }, 2000))
                 .catch(error => console.error(error))
         }else{
-            fetch('/postBooks', {
+            fetch(`${apiUrl}/postBooks`, {
                 method: 'POST'
             })
                 .then(res => res.json())
