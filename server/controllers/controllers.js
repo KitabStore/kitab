@@ -29,7 +29,7 @@ async function checkexistance(email,callback){
     if(data.length>0){
         return callback({ error: 'account exists' }, null);
     }
-    return  callback(null, null);;
+    return  callback(null, null);
 }
 
 async function login(username, password, callback) {
@@ -54,10 +54,10 @@ async function login(username, password, callback) {
         const token = createtoken(user.id);
         callback(null, { user, token });
       } else {
-        callback({ error: 'password is wrong' }, null);
+        callback({ error: 'incorrect password' }, null);
       }
     } else {
-      callback({ error: 'username is wrong' }, null);
+      callback({ error: 'incorrect username' }, null);
     }
   } catch (error) {
     console.log('Error in login method:', error);
@@ -121,7 +121,7 @@ module.exports.post_signup=(req,res)=>{
         }else{
           let salt=await bcrypt.genSalt();
           pass=await bcrypt.hash(password,salt);
-         // console.log("passssss:",pass);
+         // console.log("pass:",pass);
             const { data, error} = await supabase
                                         .from('Users') 
                                         .insert([

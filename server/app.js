@@ -15,6 +15,10 @@ app.use(express.json());
 app.listen(8080, () => {
     console.log('Server started on port 8080');
   });
+  app.get("/",(req,res)=>{
+    
+  });
+
   app.get("/api",middleware.checksignin,(req,res)=>{
     decodedtoken= req.decodedtoken;
     if(decodedtoken){
