@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
+import apiURL from '../apiConfig';
 
 const stateContext = createContext();
 
@@ -8,7 +9,7 @@ export const StateProvider = ({children}) => {
     const [signedIn, setSignedIn] = useState(false);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('/api')
+        fetch(`${apiURL}/api`)
             .then(res => res.json())
             .then(data => {
                 setSignedIn(data.logged);

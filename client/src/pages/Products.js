@@ -33,12 +33,14 @@ const Products = () => {
         setCurrentPage(1);
     }
     useEffect(() => {
-        fetch(`${apiUrl}/search/${search}`)
-            .then(res => res.json())
-            .then(data => {
-                setBooks(data.data)
-            })
-            .catch(error => console.error(error))
+        if(search !== ""){
+            fetch(`${apiUrl}/search/${search}`)
+                .then(res => res.json())
+                .then(data => {
+                    setBooks(data.data)
+                })
+                .catch(error => console.error("in search ",error))
+        }
     }, [search])
 
     // Fetching Books logic
@@ -60,10 +62,13 @@ const Products = () => {
                 .then(data => setTimeout(() => {
                     setLoading(false)
                 }, 2000))
-                .catch(error => console.error(error))
+                .catch(error => console.error("in category ",error))
         }else{
             fetch(`${apiUrl}/postBooks`, {
-                method: 'POST'
+                method: 'POST',
+                headers:{
+                    'Content-type': "application/json"
+                },
             })
                 .then(res => res.json())
                 .then(data => {
@@ -73,7 +78,7 @@ const Products = () => {
                 .then(data => setTimeout(() => {
                     setLoading(false)
                 }, 1000))
-                .catch(error => console.error(error))
+                .catch(error => console.error("in books ",error))
         }
         
     }, [category])

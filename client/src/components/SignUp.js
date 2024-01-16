@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import data from '../resources/lb.json';
 import { useRef } from 'react';
 import { useSignedIn } from '../context/stateContext';
+import apiURL from '../apiConfig';
 
 const SignUp = (props) => {
   const { setSignedIn } = useSignedIn();
@@ -19,7 +20,7 @@ const SignUp = (props) => {
     const email = ref4.current.value;
     const password = ref5.current.value;
     console.log(username, phone, location, email, password)
-    fetch('/signup', {
+    fetch(`${apiURL}/signup`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

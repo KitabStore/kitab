@@ -3,6 +3,7 @@ import './styles/modals.css';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
 import { useSignedIn } from '../context/stateContext';
+import apiURL from '../apiConfig';
 
 
 const SignIn = (props) => {
@@ -14,7 +15,7 @@ const SignIn = (props) => {
       const username = ref1.current.value;
       const password = ref2.current.value;
       console.log(username, password)
-      fetch('/login', {
+      fetch(`${apiURL}/login`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
