@@ -18,7 +18,7 @@ export const StateProvider = ({children}) => {
                 setLoading(false);
             })
             .catch(error => console.error(error))
-    }, [signedIn])
+    }, [])
 
     return (
         <stateContext.Provider value={{loading, signedIn, setSignedIn}}>
