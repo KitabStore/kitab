@@ -9,7 +9,7 @@ const app=express();
 
 app.options('*', cors());
 app.set('view engine','ejs');
-app.use(cors({origin: 'https://kitab-store.onrender.com',credentials:true}));
+app.use(cors({credentials:true}));
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(express.json());
