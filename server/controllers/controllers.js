@@ -149,16 +149,22 @@ module.exports.post_signup=(req,res)=>{
 
 module.exports.post_login=async(req,res)=>{
   const {username,password}=req.body;
+  try{
     login(username,password,(error,result)=>{
-        if (error) {
-            return res.status(500).json(error);
-        } else {
-           const { user, token } = result;
-           // console.log("in login controller:",user);
-            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000,secure:true,sameSite: 'None'});
-            res.status(201).json({ user ,logged:true});
-        }
-    })
+      if (error) {
+          return res.status(500).json(error);
+      } else {
+         const { user, token } = result;
+         // console.log("in login controller:",user);
+          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000,secure:true,sameSite: 'None'});
+          res.status(201).json({ user ,logged:true});
+      }
+  })
+  }catch(err){
+    console.log(err);
+    returnres.status(500).json({err});
+  }
+   
 }
 
 module.exports.get_logout=async(req,res)=>{
