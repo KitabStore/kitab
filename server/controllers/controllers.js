@@ -156,13 +156,13 @@ module.exports.post_login=async(req,res)=>{
       } else {
          const { user, token } = result;
          // console.log("in login controller:",user);
-          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000,secure:true,sameSite: 'None'});
+          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000, secure:true ,sameSite: 'None'});
           res.status(201).json({ user ,logged:true});
       }
   })
   }catch(err){
     console.log(err);
-    returnres.status(500).json({err});
+    return res.status(500).json({err});
   }
    
 }
