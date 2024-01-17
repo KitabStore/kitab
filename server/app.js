@@ -7,9 +7,12 @@ const cookieParser = require('cookie-parser')
 const ejs=require("ejs");
 const app=express();
 
-app.options('*', cors());
+
 app.set('view engine','ejs');
+
 app.use(cors({credentials:true}));
+app.options('*', cors());
+
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(express.json());
