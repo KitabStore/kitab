@@ -17,6 +17,7 @@ const SignIn = (props) => {
       console.log(username, password)
       fetch(`${apiURL}/login`, {
         method: "POST",
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json'
         },
