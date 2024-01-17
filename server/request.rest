@@ -14,7 +14,7 @@ POST http://localhost:8080/postBooks
 Content-Type: application/json
  
 {
-      "category":"fiction"
+    "category":"fiction"
 }
 
 ###
