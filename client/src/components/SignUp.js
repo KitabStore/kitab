@@ -41,7 +41,7 @@ const SignUp = (props) => {
         setSignedIn(data.logged);
         return data;
       })
-      .catch(error => console.error(error))
+      .catch(e => console.error(e))
     props.onHide();
   }
   return (
