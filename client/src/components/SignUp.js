@@ -34,14 +34,14 @@ const SignUp = (props) => {
             autoClose: 2500,
             pauseOnHover: true,
             draggable: true,
-          }) 
+          })
           :
           console.log(data.error.error);
           toast.success("Account Created Successfully")
         setSignedIn(data.logged);
         return data;
       })
-      .catch(e => console.error(e))
+      .catch(e => console.error("Catch Error",e))
     props.onHide();
   }
   return (
