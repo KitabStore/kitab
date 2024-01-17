@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const ejs=require("ejs");
 const app=express();
 
-
+app.options('*', cors());
 app.set('view engine','ejs');
 app.use(cors({origin: 'https://kitab-store.onrender.com',credentials:true}));
 app.use(express.urlencoded({extended:true}));
