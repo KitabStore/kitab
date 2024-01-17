@@ -10,11 +10,11 @@ GET http://localhost:8080/getbooks/fiction
 GET http://localhost:8080/getBooks/female/6
 
 ###
-POST http://localhost:8080/getBooks
+POST http://localhost:8080/postBooks
 Content-Type: application/json
  
 {
-      
+      "category":"fiction"
 }
 
 ###
@@ -28,7 +28,7 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/signup
 Content-Type: application/json
-       
+         
 {
     "username": "mahmoud",
     "phone":"03445566",

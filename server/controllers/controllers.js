@@ -134,7 +134,7 @@ module.exports.post_signup=(req,res)=>{
                                            }
                                          ]).select();
              if (error) {
-              console.error('Error inserting new user:', error.message);
+              console.error('Error inserting new user:', error);
               return res.status(201).json({ error:"failed signUp" });
             } else {
               console.log('User inserted:',data);
@@ -174,8 +174,8 @@ module.exports.postBooks = async (req, res) => {
     const { data, error } = await supabase
       .from('Books')
       .select('*')
-      .eq('categorie', category)
-      .not('nbInStock','eq',0);
+      .eq('category', category)
+      .not('quantity','eq',0);
 
     if (error) {
       console.error('Error getting category books:', error);
@@ -213,7 +213,7 @@ module.exports.postBooks = async (req, res) => {
   const { data, error } = await supabase
     .from('Books')
     .select('*')
-    .not('nbInStock', 'eq', 0);
+    .not('quantity', 'eq', 0);
 
   if (error) {
     console.error('Error getting all books:', error);
