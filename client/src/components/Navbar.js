@@ -30,6 +30,7 @@ const Navbar = () => {
       const handleLogOut = () => {
         fetch(`${apiURL}/logout`)
             .then(res => {
+                console.log(res.json())
                 setSignedIn(res.json().logged)
                 navigate('/');
             });
