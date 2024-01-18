@@ -10,6 +10,7 @@ export const StateProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch(`${apiURL}/api`, {
+            method:"GET",
             credentials: "include",
         })
             .then(res => res.json())
