@@ -9,7 +9,9 @@ export const StateProvider = ({children}) => {
     const [signedIn, setSignedIn] = useState(false);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`${apiURL}/api`)
+        fetch(`${apiURL}/api`, {
+            credentials: "include",
+        })
             .then(res => res.json())
             .then(data => {
                 setSignedIn(data.logged);

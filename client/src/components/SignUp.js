@@ -29,16 +29,19 @@ const SignUp = (props) => {
     })
       .then(res => res.json())
       .then(data => {
-          data.error.error ? 
+          data.error.error  ? 
           toast.error(data.error.error, {
             autoClose: 2500,
             pauseOnHover: true,
             draggable: true,
-          }) :
+          })
+          :
+          console.log(data.error.error);
           toast.success("Account Created Successfully")
         setSignedIn(data.logged);
+        return data;
       })
-      .catch(error => console.error(error))
+      .catch(e => console.error("Catch Error",e))
     props.onHide();
   }
   return (

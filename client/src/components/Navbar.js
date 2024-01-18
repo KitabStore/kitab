@@ -4,6 +4,7 @@ import logo from '../resources/img/dark.png';
 import { useSignedIn } from '../context/stateContext';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import apiURL from '../apiConfig';
 
 const Navbar = () => {
     const {loading, signedIn, setSignedIn} = useSignedIn();
@@ -27,7 +28,7 @@ const Navbar = () => {
       }, [signInShow, signUpShow]);
 
       const handleLogOut = () => {
-        fetch('/logout')
+        fetch(`${apiURL}/logout`)
             .then(res => {
                 setSignedIn(res.json().logged)
                 navigate('/');
