@@ -30,11 +30,11 @@ POST http://localhost:8080/signup
 Content-Type: application/json
          
 {
-    "username": "mahmoud",
+    "username": "test00",
     "phone":"03445566",
     "location":"tripoli",
-    "email":"m@hotmail.com",
-    "password": "123456"   
+    "email":"mmmm@hotmail.com",
+    "password": "123456"    
 }
 
 ###

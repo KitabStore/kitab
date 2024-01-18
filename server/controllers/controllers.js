@@ -168,7 +168,7 @@ module.exports.post_login=async(req,res)=>{
 }
 
 module.exports.get_logout=async(req,res)=>{
-  res.cookie('jwt','');
+  res.cookie('jwt','',{ secure:true ,sameSite: 'None'});
   res.status(201).json({ logged:false });
 }
 
