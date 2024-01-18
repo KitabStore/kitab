@@ -27,8 +27,21 @@ const Navbar = () => {
         }
       }, [signInShow, signUpShow]);
 
-      const handleLogOut = () => {
+     /* const handleLogOut = () => {
         fetch(`${apiURL}/logout`)
+            .then(res => {
+                setSignedIn(res.json().logged)
+                navigate('/');
+            });
+      }*/
+      const handleLogOut = () => {
+        fetch(`${apiURL}/logout`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
             .then(res => {
                 setSignedIn(res.json().logged)
                 navigate('/');
