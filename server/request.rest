@@ -44,7 +44,7 @@ Content-Type: application/json
 
 { 
 
-    "username":"mahmoud",
+    "username":"assia",
     "password":"123456"
 } 
 
@@ -76,3 +76,10 @@ Content-Type: application/json
     "id":"4",
     "quantity":"2"
 }
+
+###
+GET http://localhost:8080/getcart 
+credentials: 'include'
+
+###
+GET http://localhost:8080/cart/0060850523
