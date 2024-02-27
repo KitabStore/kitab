@@ -28,7 +28,7 @@ router.get('/search/:input',controllers.get_searchResult);
 router.post('/search',controllers.post_searchResult);
 
 //get cart
-router.get('/getcart'/*,middlewares.checklogin*/,controllers.get_cart);
+router.get('/getcart',middlewares.checklogin,controllers.get_cart);
 
 //delete from cart,send book id
 router.get('/cart/:id',controllers.delete_from_cart);
