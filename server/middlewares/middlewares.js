@@ -1,8 +1,12 @@
 const jwt=require('jsonwebtoken');
 
-/*const checklogin=(req,res,next)=>{
+
+
+module.exports.checklogin=(req,res,next)=>{
     console.log("i entered");
     console.log(req.cookies);
+    //console.log("req headers:")
+    //console.log(req);
     const token= req.cookies.jwt;
     console.log("in he middleware:",req.cookies);
 
@@ -10,17 +14,17 @@ const jwt=require('jsonwebtoken');
         jwt.verify(token,'user secret',(err,decodedtoken)=>{
             if(err){
                 console.log(err);
-                res.redirect('/login');
+                res.status(401).json({logged:false});
             }else{
-                console.log("decodedtoken.id:",decodedtoken.token);
+                console.log("decodedtoken.id:",decodedtoken);
                 console.log("decodedtoken:",decodedtoken);
                 req.decodedtoken=decodedtoken;
                 next();
             }
 
         })
-    }else res.redirect('/login');
-}*/
+    }else res.status(401).json({logged:false});
+}
 
 module.exports.checksignin= (req,res,next)=>{
     let token=req.cookies.jwt;

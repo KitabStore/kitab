@@ -47,11 +47,12 @@ async function login(username, password, callback) {
 
     if (users.length > 0) {
       const user = users[0];
+     // console.log(user);
 
       const auth = await bcrypt.compare(password, user.password);
 
       if (auth) {
-        const token = createtoken(user.id);
+        const token = createtoken(user.userid);
         callback(null, { user, token });
       } else {
         callback({ error: 'incorrect password' }, null);
@@ -63,6 +64,7 @@ async function login(username, password, callback) {
     console.log('Error in login method:', error);
   }
 }
+
 
 
 async function addTojoinedtable(oid,bid,qte,price){
@@ -275,5 +277,91 @@ if(error){
 }
 console.log(data);
   return res.status(201).json({ data });
+
+}
+
+module.exports.get_cart=async (req,res)=>{
+  let uid=req.decodedtoken.token;
+ //let uid=13;
+  let {data:uorder,error:oerror}=await supabase
+                                       .from('Order')
+                                       .select("orderid,totaleprice")
+                                       .eq("userid",uid)
+                                       .eq("ordered",false);
+   
+   if (oerror) {
+     console.error('Error getting order in get cart:',oerror);
+     return res.status(500).json({ error:"failed getting order" });
+   }
+   console.log("order in get cart",uorder);
+
+   currentorder=uorder[0].orderid;
+  let oid=uorder[0].orderid;
+  let totaleprice=uorder[0].totaleprice; 
+
+  console.log("oid in get cart:",oid);
+  console.log("totale price in get cart",totaleprice);
+
+  let {data,error}=await supabase
+                         .from('BookOrder')
+                         .select("*")
+                         .eq("orderid",oid);
+ 
+   if (error) {
+     console.error('Error getting order books in get cart:',error);
+     return res.status(500).json({ error:"failed getting books of order" });
+   }
+   console.log("books in get cart",data);
+
+   return res.status(201).json({logged:true,data});
+               
+}
+
+module.exports.delete_from_cart=async (req,res)=>{
+   let bookid=req.params.id;
+
+   console.log("current order in deleting order",currentorder);
+   if(currentorder){
+     //get the specified order
+     let{data:uorder,error:erroro}=await supabase
+   .from('Order')
+   .select('*')
+   .eq('orderid',currentorder);
+
+   //delete item from orderbook
+   let {data,error:errorob} =await supabase
+               .from('BookOrder')
+               .delete()
+               .eq('isbn',bookid)
+               .eq('orderid',currentorder)
+               .select();
+
+   if (errorob) {
+     console.error('Error deleting in orderbook:', errorob);
+     return res.status(500).json({ error:"failed deleting from your order" });
+   }
+   console.log(data);
+
+   price=data[0].price;
+
+   //update totale price of the order
+   let {data:Uorder,error} =await supabase
+               .from('Order')
+               .update({
+                 totaleprice: uorder[0].totaleprice - price
+               })
+               .eq('orderid',currentorder)
+               .select();
+
+   if (error) {
+     console.error('Error updating in order table:', error);
+     return res.status(500).json({ error:"failed deleting from your order" });
+}
+   return res.status(201).json({order:Uorder});
+   }
+   
+   console.log("current order:",currentorder);
+   return res.status(500).json("intenal problem server");
+   
 
 }
