@@ -35,7 +35,7 @@ ex:
 router.post('/cart',middlewares.checklogin,controllers.post_cart);
 
 //get cart
-router.get('/getcart',middlewares.checklogin,controllers.get_cart);
+router.get('/getcart'/*,middlewares.checklogin*/,controllers.get_cart);
 
 //delete from cart,send book id
 router.get('/cart/:id',controllers.delete_from_cart);

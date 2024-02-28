@@ -289,8 +289,8 @@ console.log(data);
 }
 
 module.exports.get_cart=async (req,res)=>{
-  let uid=req.decodedtoken.token;
- //let uid=13;
+  //let uid=req.decodedtoken.token;
+ let uid=13;
   let {data:uorder,error:oerror}=await supabase
                                        .from('Order')
                                        .select("orderid,totaleprice")
