@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import Order from '../components/checkoutModal';
 import { toast } from 'react-toastify';
 import apiUrl from '../apiConfig';
+import mock from '../resources/mockCart.json';
 
 
 const Cart = () => {
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
-  let sub = 0;
+  const [sub, setSub] = useState(0);
   const delivery = 5;
 
   const [books, setBooks] = useState([]);
@@ -20,9 +21,9 @@ const Cart = () => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {
-          console.log("in fetching cart", data);
+          console.log("in fetching cart", data.data);
           setBooks(data.data);
-          console.log("books", books);
+          console.log("books length ", books.length);
           setSize(books.length);
           return data;
       })
@@ -35,11 +36,11 @@ const Cart = () => {
       .then(data => {
         console.log(data);
         setBooks(data.order);
+        console.log("books length ", books.length)
         setSize(books.length);
         return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
-
 
   useEffect(() => {
     if(!signedIn){
@@ -70,7 +71,7 @@ const Cart = () => {
         <div className='mt-5 p-3 mb-5 h1'>
            Your Cart {size <= 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
-        {size = 0 ?
+        {size > 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
@@ -81,8 +82,9 @@ const Cart = () => {
             <div className='col-2 col-md-2'>Remove</div>
             <div className='d-none d-md-block col-md-1'></div>
           </div>
-          {books?.map(book => {
-            sub = sub + (book.quantity * book.price);
+          {
+          books?.map(book => {
+            setSub(sub + (book.quantity * book.price));
             return(
               <div className='tItems row d-flex align-items-center py-3' key={book.isbn}>
                 <div className='col-md-1'></div>
@@ -90,7 +92,7 @@ const Cart = () => {
                 <div className='col-2'>{book.price}$</div>
                 <div className='col-2'>{book.quantity}</div>
                 <div className='col-2'>{book.quantity * book.price} $</div>
-                <div className='col-2'><i class="bi bi-trash-fill h6" onClick={() => itemDelete(book.isbn)} title='Remove from Cart'></i></div>
+                <div className='col-2'><i className="bi bi-trash-fill h6" onClick={() => itemDelete(book.isbn)} title='Remove from Cart'></i></div>
                 <div className='col-1'></div>
               </div>
             )
