@@ -15,6 +15,7 @@ const Cart = () => {
   const delivery = 5;
 
   const {books, setBooks} = useState({});
+
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
@@ -23,7 +24,7 @@ const Cart = () => {
         console.error(err);
         toast.error("Check your Internet Connection");
       })
-  },[books])
+  },[])
 
   const itemDelete = id => {
     fetch(`${apiUrl}/cart/${id}`)
@@ -72,7 +73,7 @@ const Cart = () => {
             <div className='col-2 col-md-2'>Remove</div>
             <div className='d-none d-md-block col-md-1'></div>
           </div>
-          {books.map(book => {
+          {books?.map(book => {
             sub = sub + (book.quantity * book.price);
             return(
               <div className='tItems row d-flex align-items-center py-3' key={book.isbn}>

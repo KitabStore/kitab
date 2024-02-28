@@ -40,7 +40,7 @@ const Home = () => {
             </div>
             <div className="container-fluid text-center p-3 bg-dark border-top border-bottom">
                 <div className="col d-flex flex-columns justify-content-center align-items-center p-5">
-                    <div className='mt-3 text-center container-fluid'>
+                    <div className='mt-3 text-justify container-fluid'>
                         <i className="bi bi-quote h1"></i><br/>
                             {loading ?   
                                 <div className="card-text container text-center quote-Load placeholder-glow">
@@ -106,7 +106,7 @@ const Home = () => {
                         <div>
                                 <h1>About Us</h1>
                         </div>
-                        <p className='text-center'>Welcome to our online Store, where the love for literature meets the convenience of modern shopping. At <i className='h5'>Kitab</i>, we're passionate about connecting readers with captivating stories, insightful knowledge, and literary treasure. Our curated collection spans genres from timeless classics to contemporary bestsellers, ensuring there's a book for every taste and interest.</p>
+                        <p className='text-justify'>Welcome to our online Store, where the love for literature meets the convenience of modern shopping. At <i className='h5'>Kitab</i>, we're passionate about connecting readers with captivating stories, insightful knowledge, and literary treasure. Our curated collection spans genres from timeless classics to contemporary bestsellers, ensuring there's a book for every taste and interest.</p>
                     </div>
                 </div>
                 <div className={`go-top ${inView4 && 'animate-top'}`}><a className="h1" href='#top'><i className='bi bi-arrow-up-square'></i></a></div>
