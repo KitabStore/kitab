@@ -20,6 +20,8 @@ const Cart = () => {
       .then(res => res.json())
       .then(data => {
           console.log("in fetching cart", data.data);
+          console.log("books " , books);
+          console.log("Books.length ", books.legth); 
           setBooks(data.data);
           return data;
       })
@@ -32,8 +34,6 @@ const Cart = () => {
       .then(data => {
         console.log(data);
         setBooks(data.order);
-        console.log("books " , books);
-        console.log("Books.length ", books.legth); 
         return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
