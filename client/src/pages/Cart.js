@@ -14,15 +14,15 @@ const Cart = () => {
   const delivery = 5;
 
   const [books, setBooks] = useState([]);
-  const [size, setSize] = useState();
+  const [size, setSize] = useState(0);
 
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {
-          console.log("in fetching cart", data.length);
+          console.log("in fetching cart", data);
           setBooks(data.data);
-          console.log("books size ", books.length);
+          console.log("books", books);
           setSize(books.length);
           return data;
       })
@@ -70,7 +70,7 @@ const Cart = () => {
         <div className='mt-5 p-3 mb-5 h1'>
            Your Cart {size <= 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
-        {size > 0 ?
+        {size = 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
