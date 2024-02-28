@@ -19,8 +19,8 @@ const Cart = () => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {
-          console.log("in fetching cart", data.data);
-          setBooks(data.data);
+          console.log("in fetching cart", data);
+          setBooks(data);
           console.log("books " , books);
           console.log("Books.length ", books.legth); 
           return data;
