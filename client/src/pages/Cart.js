@@ -59,7 +59,7 @@ const Cart = () => {
   return (
     <div className='d-flex flex-column align-items-center my-5 mx-2'>
         <div className='mt-5 p-3 mb-5 h1'>
-           Your Cart {number > 0 ? `[${number} Item ${number > 1 ? 's' : ''}]` : "is Empty"}
+           Your Cart
         </div>
         
         <div className='container container-fluid p-3 border border-dark rounded'>
@@ -106,7 +106,7 @@ const Cart = () => {
           </div>
         </div>
         
-        <Order show={show} total={(sub + delivery).toFixed(2)} count={number} handleClose={handleClose} books={books}></Order>
+        <Order show={show} total={(sub + delivery).toFixed(2)} handleClose={handleClose} books={books}></Order>
     </div>
   )
 }
