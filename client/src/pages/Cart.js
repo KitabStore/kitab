@@ -19,17 +19,22 @@ const Cart = () => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {
-          setBooks(data.data);
           console.log("in fetching cart", data.data);
+          console.log("books " , books);
+          console.log("Books.length ", books.legth); 
+          setBooks(data.data);
           return data;
       })
       .catch(error => console.error("in Cart ",error))
-  },[])
+  },[books, setBooks])
 
   const itemDelete = id => {
     fetch(`${apiUrl}/cart/${id}`)
       .then(res => res.json())
-      .then(data => {console.log(data);setBooks(data.order); console.log("books" , books); return data;})
+      .then(data => {
+        console.log(data);
+        setBooks(data.order);
+        return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
 
