@@ -20,7 +20,7 @@ const Cart = () => {
       .then(res => res.json())
       .then(data => {
           console.log("in fetching cart", data);
-          setBooks(data);
+          setBooks(data.data);
       })
   },[])
 
@@ -75,7 +75,7 @@ const Cart = () => {
             <div className='col-2 col-md-2'>Remove</div>
             <div className='d-none d-md-block col-md-1'></div>
           </div>
-          {books?.map(book => {
+          {books.map(book => {
             sub = sub + (book.quantity * book.price);
             return(
               <div className='tItems row d-flex align-items-center py-3' key={book.isbn}>
