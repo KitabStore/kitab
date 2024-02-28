@@ -13,7 +13,8 @@ const Cart = () => {
   let sub = 0;
   const delivery = 5;
 
-  const [books, setBooks] = useState({});
+  const [books, setBooks] = useState([]);
+  const [size, setSize] = useState();
 
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
@@ -21,6 +22,8 @@ const Cart = () => {
       .then(data => {
           console.log("in fetching cart", data);
           setBooks(data.data);
+          console.log("books size ", books.length);
+          setSize(books.length);
           return data;
       })
       .catch(error => console.error("in cart", error))
@@ -32,6 +35,7 @@ const Cart = () => {
       .then(data => {
         console.log(data);
         setBooks(data.order);
+        setSize(books.length);
         return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
@@ -64,9 +68,9 @@ const Cart = () => {
   return (
     <div className='d-flex flex-column align-items-center my-5 mx-2'>
         <div className='mt-5 p-3 mb-5 h1'>
-           Your Cart
+           Your Cart {size < 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
-        
+        {size > 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
@@ -110,7 +114,9 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        
+        :
+        <div className='my-3'></div>
+        }
         <Order show={show} total={(sub + delivery).toFixed(2)} handleClose={handleClose} books={books}></Order>
     </div>
   )
