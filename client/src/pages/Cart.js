@@ -1,5 +1,4 @@
 import React, { useEffect,useState } from 'react';
-import books from '../resources/mockCart.json';
 import './styles/cart.css'
 import { useSignedIn } from '../context/stateContext';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,23 @@ import Order from '../components/checkoutModal';
 
 
 const Cart = () => {
+
+  const {books, setBooks} = useState({});
+  useEffect(() => {
+    fetch('/getcart')
+      .then(res => res.json())
+      .then(data => {setBooks(data); return data;})
+      .catch(err => {
+        console.error(err);
+        toast.error("Check your Internet Connection");
+      })
+  },[books])
+
+  const itemDelete = id => {
+    fetch(`/cart/${id}`)
+      .catch(err => toast.error(err));
+  }
+
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
   const number = books.length;
@@ -61,7 +77,7 @@ const Cart = () => {
                 <div className='col-2'>{book.price}$</div>
                 <div className='col-2'>{book.quantity}</div>
                 <div className='col-2'>{book.quantity * book.price} $</div>
-                <div className='col-2'><i class="bi bi-trash-fill h6" onClick={() => alert("Item " + book.isbn + " Deleted")} title='Remove from Cart'></i></div>
+                <div className='col-2'><i class="bi bi-trash-fill h6" onClick={() => itemDelete(book.isbn)} title='Remove from Cart'></i></div>
                 <div className='col-1'></div>
               </div>
             )
