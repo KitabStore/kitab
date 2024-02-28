@@ -10,7 +10,7 @@ import apiUrl from '../apiConfig';
 const Cart = () => {
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
-  const {number, setNumber} = useState(5);
+  const {number, setNumber} = useState();
   let sub = 0;
   const delivery = 5;
 
@@ -19,17 +19,17 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log(data); return data;})
+      .then(data => {console.log("in fetching cart", data); setBooks(data.data); setNumber(data.data.length); console.log("Number: ", number); return data;})
       .catch(err => {
         console.log(err);
         toast.error("Check your Internet Connection");
       })
-  },[])
+  },[books])
 
   const itemDelete = id => {
     fetch(`${apiUrl}/cart/${id}`)
       .then(res => res.json())
-      .then(data => {console.log(data); return data;})
+      .then(data => {console.log(data);setBooks(data.order); return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
 
@@ -63,6 +63,7 @@ const Cart = () => {
         <div className='mt-5 p-3 mb-5 h1'>
            Your Cart {number > 0 ? `[${number} Item ${number > 1 ? 's' : ''}]` : "is Empty"}
         </div>
+        {number > 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
@@ -106,6 +107,9 @@ const Cart = () => {
             </div>
           </div>
         </div>
+        :
+        <div className='my-5'></div>
+        }
         <Order show={show} total={(sub + delivery).toFixed(2)} count={number} handleClose={handleClose} books={books}></Order>
     </div>
   )
