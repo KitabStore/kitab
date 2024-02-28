@@ -8,6 +8,11 @@ import apiUrl from '../apiConfig';
 
 
 const Cart = () => {
+  const {signedIn} = useSignedIn();
+  const navigate = useNavigate();
+  const {number, setNumber} = useState(5);
+  let sub = 0;
+  const delivery = 5;
 
   const {books, setBooks} = useState({});
   useEffect(() => {
@@ -27,11 +32,6 @@ const Cart = () => {
       .catch(err => {console.log(err); toast.error(err)});
   }
 
-  const {signedIn} = useSignedIn();
-  const navigate = useNavigate();
-  const number = books.length;
-  let sub = 0;
-  const delivery = 5;
 
   useEffect(() => {
     if(!signedIn){
