@@ -19,10 +19,9 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log("in fetching cart", data); setBooks(data.data); setNumber(data.data.length); console.log("Number: ", number); return data;})
+      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); setNumber(data.data.length); console.log("Number: ", number); return data;})
       .catch(err => {
         console.log(err);
-        toast.error("Check your Internet Connection");
       })
   },[books])
 
