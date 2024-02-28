@@ -3,13 +3,15 @@ import './styles/cart.css'
 import { useSignedIn } from '../context/stateContext';
 import { useNavigate } from 'react-router-dom';
 import Order from '../components/checkoutModal';
+import { toast } from 'react-toastify';
+import apiUrl from '../apiConfig';
 
 
 const Cart = () => {
 
   const {books, setBooks} = useState({});
   useEffect(() => {
-    fetch('/getcart')
+    fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {setBooks(data); return data;})
       .catch(err => {
@@ -19,7 +21,7 @@ const Cart = () => {
   },[books])
 
   const itemDelete = id => {
-    fetch(`/cart/${id}`)
+    fetch(`${apiUrl}/cart/${id}`)
       .catch(err => toast.error(err));
   }
 
