@@ -48,6 +48,14 @@ const Cart = () => {
     }
   }, [navigate, signedIn])
 
+  useEffect(() => {
+    let total = 0;
+    books.forEach(book => {
+      total += book.quantity * book.price;
+    });
+    setSub(total);
+  }, [books]);
+
   // Modal Components
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -84,7 +92,6 @@ const Cart = () => {
           </div>
           {
           books?.map(book => {
-            setSub(sub + (book.quantity * book.price));
             return(
               <div className='tItems row d-flex align-items-center py-3' key={book.isbn}>
                 <div className='col-md-1'></div>
