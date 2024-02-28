@@ -40,7 +40,7 @@ const Home = () => {
             </div>
             <div className="container-fluid text-center p-3 bg-dark border-top border-bottom">
                 <div className="col d-flex flex-columns justify-content-center align-items-center p-5">
-                    <div className='mt-3 text-justify container-fluid'>
+                    <div className='mt-3 text-center container-fluid'>
                         <i className="bi bi-quote h1"></i><br/>
                             {loading ?   
                                 <div className="card-text container text-center quote-Load placeholder-glow">

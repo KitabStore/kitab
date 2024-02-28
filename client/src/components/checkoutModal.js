@@ -17,7 +17,7 @@ const checkoutModal = (props) => {
         </Modal.Header>
         <Modal.Body
             className='bg-dark'>
-          {props.books.map((book, index) =>{
+          {props?.books?.map((book, index) =>{
             return(
               <p key={book.isbn}>{index}. {book.title}</p>
             )
