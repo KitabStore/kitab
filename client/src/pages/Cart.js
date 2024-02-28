@@ -20,7 +20,7 @@ const Cart = () => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {
-          console.log("in fetching cart", data);
+          console.log("in fetching cart", data.length);
           setBooks(data.data);
           console.log("books size ", books.length);
           setSize(books.length);
@@ -68,7 +68,7 @@ const Cart = () => {
   return (
     <div className='d-flex flex-column align-items-center my-5 mx-2'>
         <div className='mt-5 p-3 mb-5 h1'>
-           Your Cart {size < 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
+           Your Cart {size <= 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
         {size > 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
