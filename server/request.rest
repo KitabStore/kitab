@@ -30,10 +30,10 @@ POST http://localhost:8080/signup
 Content-Type: application/json
          
 {
-    "username": "test00",
+    "username": "test444",
     "phone":"03445566",
     "location":"tripoli",
-    "email":"mmmm@hotmail.com",
+    "email":"tttt@hotmail.com",
     "password": "123456"    
 }
 
@@ -44,8 +44,8 @@ Content-Type: application/json
 
 { 
 
-    "username":"assia",
-    "password":"123456"
+    "username":"assia",  
+    "password":"123456" 
 } 
 
 ###
@@ -72,14 +72,14 @@ POST http://localhost:8080/cart
 Content-Type: application/json
       
 {  
- 
-    "id":"4",
-    "quantity":"2"
-}
+
+    "id":"0735211299", 
+    "quantity":"1"
+}  
 
 ###
 GET http://localhost:8080/getcart 
 credentials: 'include'
 
 ###
-GET http://localhost:8080/cart/0060850523
+GET http://localhost:8080/cart/0735211299

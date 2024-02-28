@@ -72,22 +72,23 @@ async function addTojoinedtable(oid,bid,qte,price){
   try{
 
     const { data: OB, error } = await supabase
-  .from('orderbook')
+  .from('BookOrder')
   .select('*')
   .eq('orderid', oid)
-  .eq('bookid', bid);
+  .eq('isbn', bid);
 
   if (error) {
     console.error('Error selecting from joined table orderbook:', error.message);
     return;
   }
+  console.log("OB",OB);
   if(OB.length<=0){
     const { data: insertResult, error: insertError } = await supabase
-    .from('orderbook')
+    .from('BookOrder')
     .insert([
       {
         orderid: oid,
-        bookid: bid,
+        isbn: bid,
         quantity: qte,
         price: price,
       },
@@ -100,15 +101,22 @@ async function addTojoinedtable(oid,bid,qte,price){
   }
 else{
   const { data, error } = await supabase
-  .rpc('increment', { x: OB[0].quantity+qte, y:OB[0].price+price , order_id: oid, book_id: bid });
-}
+  .rpc('increment', { x: qte, y:price , order_id: oid, book_id: bid });
 
+  if(error){
+    console.error('Error incrementing in joined table orderbook:',error);
+    return;
+  }
+  console.log("from increment method:",data);
+
+}
 } catch (err) {
 console.error('Unexpected error in addTojoinedtable method:', err);
-return;
+return ;
 }
   
 }
+
 
 
 //controllers
@@ -158,7 +166,7 @@ module.exports.post_login=async(req,res)=>{
       } else {
          const { user, token } = result;
          // console.log("in login controller:",user);
-          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000, secure:true ,sameSite: 'None'});
+          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000/*, secure:true ,sameSite: 'None'*/});
           res.status(201).json({ user ,logged:true});
       }
   })
@@ -313,7 +321,7 @@ module.exports.get_cart=async (req,res)=>{
    }
    console.log("books in get cart",data);
 
-   return res.status(201).json({logged:true,data});
+   return res.status(201).json({logged:true,data,totaleprice});
                
 }
 
@@ -363,5 +371,131 @@ module.exports.delete_from_cart=async (req,res)=>{
    console.log("current order:",currentorder);
    return res.status(500).json("intenal problem server");
    
+
+}
+
+module.exports.post_cart=async (req,res)=>{
+  let user=req.decodedtoken.token;
+// let user=16;
+  try{
+  let {id,quantity}=req.body;
+
+  let {data:book,error:errorb} =await supabase
+                .from('Books')
+                .select('*')
+                .eq('isbn',id);
+
+     if (errorb) {
+       console.error('Error getting book:', errorb.message);
+       return res.status(500).json({ error:"failed get book,try again later" });
+     }
+
+     console.log('get book:',book);
+     if(book.length<=0){
+      return res.status(500).json({ error:"book not found" });
+     }
+  
+     console.log(book[0].quantity);
+
+     if(book[0].quantity<quantity){
+      return res.status(500).json({error:"choose quantity equal or less then stock quantity"});
+     }
+     let unitprice=book[0].price;
+    // console.log("type of unitprice",unitprice,typeof(unitprice));
+
+     const {data:order,error:errorc}=await supabase
+                  .from('Order')
+                  .select('*')
+                  .eq('userid',user)
+                  .eq('ordered',false);
+       if (errorc) {
+         console.error('Error getting order:', errorc);
+         return res.status(201).json({ error:"failed get order,try again later" });
+       } 
+        // console.log('get cart:',order);
+      
+         let totalep=quantity*unitprice;
+        
+         if(order.length<=0){
+          
+          console.log(totalep);
+          const {data:order,error}= await supabase
+               .from('Order')
+               .insert([
+                 {
+                   userid:user,
+                   totaleprice:totalep,
+                   shipped:false,
+                   ordered:false
+                 }
+               ]).select('orderid')
+       
+               if (error) {
+                 console.error('Error inserting new order:', error);
+                 return res.status(201).json({ error:"failed create order,try again later" });
+               }
+                 //console.log('order inserted:',order);
+               console.log("bquantity:",quantity);
+               console.log("totalep",totalep);
+               currentorder=order[0].orderid;
+              await addTojoinedtable(order[0].orderid,book[0].isbn,quantity,totalep);
+
+              let {data:books,error:berror}=await supabase
+                                                  .from('BookOrder')
+                                                  .select('*')
+                                                  .eq("orderid",order[0].orderid);
+
+                let totaleprice=books[0].price;
+                console.log("the final totale price:",totaleprice);
+                return res.status(201).json({ totaleprice,books });
+                 
+         }else{
+          currentorder=order[0].orderid;
+          let currentbook=book[0].isbn;
+          let qte=parseInt(quantity);
+          console.log("quantity:",qte);
+          console.log("totalep:",totalep);
+          console.log("current book:",currentbook);
+          console.log("current order:",currentorder);
+          console.log("user:",user);
+
+        await  addTojoinedtable(order[0].orderid,book[0].isbn,quantity,totalep);
+
+        
+
+          const { data, error } = await supabase
+          .from('Order')
+          .update({
+            userid: user,
+            totaleprice: order[0].totaleprice + totalep,
+            shipped: false,
+            ordered:false
+          })
+          .eq('userid', user) 
+          .eq('orderid',currentorder)
+          .select('*');
+          //console.log(`testing values:${order[0].totaleprice} and totalep:${totalep}`);
+
+          console.log("here:",data);
+
+          if (error) {
+            console.error('Error update existing order:', error.message);
+            return res.status(500).json({ error:"failed update order" });
+          }
+
+          let {data:books,error:berror}=await supabase
+                                                  .from('BookOrder')
+                                                  .select('*')
+                                                  .eq("orderid",data[0].orderid);
+
+          let totaleprice=data[0].totaleprice;
+          return res.status(201).json({ totaleprice,books });
+         }
+
+          
+  }catch(err){
+    console.error('Unexpected error:', err);
+  return res.status(500).json({ err: "Internal server error" });
+  }
 
 }

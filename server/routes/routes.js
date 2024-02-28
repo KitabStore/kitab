@@ -27,6 +27,13 @@ router.get('/search/:input',controllers.get_searchResult);
 //post search result
 router.post('/search',controllers.post_searchResult);
 
+/*add books to cart
+ex:
+    "id":"0735211299", 
+    "quantity":"1"  
+*/
+router.post('/cart',middlewares.checklogin,controllers.post_cart);
+
 //get cart
 router.get('/getcart',middlewares.checklogin,controllers.get_cart);
 
