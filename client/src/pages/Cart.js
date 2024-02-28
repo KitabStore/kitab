@@ -10,7 +10,7 @@ import apiUrl from '../apiConfig';
 const Cart = () => {
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
-  const {number, setNumber} = useState(5);
+  const {number, setNumber} = useState();
   let sub = 0;
   const delivery = 5;
 
@@ -19,7 +19,7 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log(data);setBooks(data.data); return data;})
+      .then(data => {console.log("in fetching cart", data); setBooks(data.data); setNumber(data.data.length); return data;})
       .catch(err => {
         console.log(err);
         toast.error("Check your Internet Connection");
