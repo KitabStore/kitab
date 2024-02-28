@@ -19,7 +19,7 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log(data); return data;})
+      .then(data => {console.log(data);setBooks(data.data); return data;})
       .catch(err => {
         console.log(err);
         toast.error("Check your Internet Connection");
@@ -29,7 +29,7 @@ const Cart = () => {
   const itemDelete = id => {
     fetch(`${apiUrl}/cart/${id}`)
       .then(res => res.json())
-      .then(data => {console.log(data); return data;})
+      .then(data => {console.log(data);setBooks(data.order); return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
 
