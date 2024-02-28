@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import Order from '../components/checkoutModal';
 import { toast } from 'react-toastify';
 import apiUrl from '../apiConfig';
-import mock from '../resources/mockCart.json';
 
 
 const Cart = () => {
@@ -23,8 +22,7 @@ const Cart = () => {
       .then(data => {
           console.log("in fetching cart", data.data);
           setBooks(data.data);
-          console.log("books length ", books.length);
-          setSize(books.length);
+          console.log("books ", books);
           return data;
       })
       .catch(error => console.error("in cart", error))
@@ -36,8 +34,6 @@ const Cart = () => {
       .then(data => {
         console.log(data);
         setBooks(data.order);
-        console.log("books length ", books.length)
-        setSize(books.length);
         return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
@@ -54,6 +50,8 @@ const Cart = () => {
       total += book.quantity * book.price;
     });
     setSub(total);
+    setSize(books.length);
+    console.log("books length ", size);
   }, [books]);
 
   // Modal Components
@@ -79,7 +77,7 @@ const Cart = () => {
         <div className='mt-5 p-3 mb-5 h1'>
            Your Cart {size <= 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
-        {size => 0 ?
+        {size >= 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
