@@ -18,11 +18,13 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); console.log("books" , books);; return data;})
-      /*.catch(err => {
-        console.log(err);
-      })*/
-  },[books])
+      .then(data => {
+          setBooks(data.data);
+          console.log("in fetching cart", data.data);
+          return data;
+      })
+      .catch(error => console.error("in Cart ",error))
+  },[])
 
   const itemDelete = id => {
     fetch(`${apiUrl}/cart/${id}`)
