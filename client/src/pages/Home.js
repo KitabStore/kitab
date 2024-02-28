@@ -82,7 +82,7 @@ const Home = () => {
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">You Can Order Now</h5>
-                            <p className="card-text h3 me-5 pe-4">يمكنك الطلب الان</p>
+                            <p className="card-text h3 mx-5 pe-4">يمكنك الطلب الان</p>
                                 <div className='animate-arrow'><i className="bi bi-arrow-bar-down h1"></i></div>
                         </div>
                     </div>
