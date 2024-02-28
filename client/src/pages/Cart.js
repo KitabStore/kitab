@@ -10,7 +10,6 @@ import apiUrl from '../apiConfig';
 const Cart = () => {
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
-  const {number, setNumber} = useState(2);
   let sub = 0;
   const delivery = 5;
 
@@ -19,7 +18,7 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); console.log("Number: ", number); console.log("books" , books);; return data;})
+      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); console.log("books" , books);; return data;})
       /*.catch(err => {
         console.log(err);
       })*/
@@ -62,7 +61,7 @@ const Cart = () => {
         <div className='mt-5 p-3 mb-5 h1'>
            Your Cart {number > 0 ? `[${number} Item ${number > 1 ? 's' : ''}]` : "is Empty"}
         </div>
-        {number > 0 ?
+        
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
@@ -106,9 +105,7 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        :
-        <div className='my-5'></div>
-        }
+        
         <Order show={show} total={(sub + delivery).toFixed(2)} count={number} handleClose={handleClose} books={books}></Order>
     </div>
   )
