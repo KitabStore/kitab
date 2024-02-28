@@ -77,7 +77,7 @@ const Cart = () => {
         <div className='mt-5 p-3 mb-5 h1'>
            Your Cart {size <= 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
-        {size >= 0 ?
+        {size > 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
@@ -96,7 +96,7 @@ const Cart = () => {
                 <div className='col-3'>{itemDisplay(book)}</div>
                 <div className='col-2'>{book.price}$</div>
                 <div className='col-2'>{book.quantity}</div>
-                <div className='col-2'>{book.quantity * book.price} $</div>
+                <div className='col-2'>{book.quantity * book.price}$</div>
                 <div className='col-2'><i className="bi bi-trash-fill h6" onClick={() => itemDelete(book.isbn)} title='Remove from Cart'></i></div>
                 <div className='col-1'></div>
               </div>
