@@ -82,7 +82,7 @@ const Home = () => {
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">You Can Order Now</h5>
-                            <p className="card-text h3 me-5 pe-4">يمكنك الطلب الان</p>
+                            <p className="card-text h3 mx-5 pe-4">يمكنك الطلب الان</p>
                                 <div className='animate-arrow'><i className="bi bi-arrow-bar-down h1"></i></div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ const Home = () => {
                         <div>
                                 <h1>About Us</h1>
                         </div>
-                        <p className='text-center'>Welcome to our online Store, where the love for literature meets the convenience of modern shopping. At <i className='h5'>Kitab</i>, we're passionate about connecting readers with captivating stories, insightful knowledge, and literary treasure. Our curated collection spans genres from timeless classics to contemporary bestsellers, ensuring there's a book for every taste and interest.</p>
+                        <p className='text-justify'>Welcome to our online Store, where the love for literature meets the convenience of modern shopping. At <i className='h5'>Kitab</i>, we're passionate about connecting readers with captivating stories, insightful knowledge, and literary treasure. Our curated collection spans genres from timeless classics to contemporary bestsellers, ensuring there's a book for every taste and interest.</p>
                     </div>
                 </div>
                 <div className={`go-top ${inView4 && 'animate-top'}`}><a className="h1" href='#top'><i className='bi bi-arrow-up-square'></i></a></div>
