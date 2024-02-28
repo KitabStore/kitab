@@ -321,7 +321,20 @@ module.exports.get_cart=async (req,res)=>{
    }
    console.log("books in get cart",data);
 
-   return res.status(201).json({logged:true,data,totaleprice});
+   let { data: booksData, error: booksError } = await supabase
+                                                    .from('order_book_details')
+                                                    .select('*')
+                                                    .eq('orderid',currentorder);
+
+  if (booksError) {
+    console.error('Error getting order books in get cart:',booksError);
+    return res.status(500).json({ error:"failed getting books of order" });
+   }
+
+   
+  console.log("books in get order:",booksData);
+
+   return res.status(201).json({logged:true,data:booksData,totaleprice});
                
 }
 
