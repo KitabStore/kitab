@@ -119,7 +119,7 @@ module.exports.post_signup=(req,res)=>{
 
     checkexistance(email,async (error,result)=>{
         if(error){
-            return  res.status(201).json({ error });
+            return  res.status(201).json( error );
         }else{
           let salt=await bcrypt.genSalt();
           pass=await bcrypt.hash(password,salt);
