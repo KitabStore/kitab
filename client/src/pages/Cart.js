@@ -22,10 +22,10 @@ const Cart = () => {
           console.log("in fetching cart", data);
           setBooks(data);
           console.log("books " , books);
-          console.log("Books.length ", books.legth); 
+          console.log("Books.length ", books); 
           return data;
       })
-      .catch(error => console.log("in Cart ",error))
+      .catch(error => console.error("in Cart ",error))
   },[])
 
   const itemDelete = id => {
