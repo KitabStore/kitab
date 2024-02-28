@@ -19,16 +19,16 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); setNumber(data.data.length); console.log("Number: ", number); return data;})
-      .catch(err => {
+      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); setNumber(data.data.length); console.log("Number: ", number); console.log("books" , books);; return data;})
+      /*.catch(err => {
         console.log(err);
-      })
+      })*/
   },[books])
 
   const itemDelete = id => {
     fetch(`${apiUrl}/cart/${id}`)
       .then(res => res.json())
-      .then(data => {console.log(data);setBooks(data.order); return data;})
+      .then(data => {console.log(data);setBooks(data.order); console.log("books" , books); return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }
 
