@@ -381,24 +381,23 @@ module.exports.delete_from_cart=async (req,res)=>{
 }
 
   //new order item from orderbook
-  try{
-    let {data:newOrder,error:errornew} =await supabase
-    .from('BookOrder')
-    .select('*')
-    .eq('orderid',currentorder);
   
-    if (errornew) {
-      console.error('Error sending order in order table:', errornew);
-      return res.status(500).json({ error:"failed sending the order" });
-  }
+    
+   let { data: booksData, error: booksError } = await supabase
+   .from('order_book_details')
+   .select('*')
+   .eq('orderid',currentorder);
+
+   if (booksError) {
+   console.error('Error getting order books in get cart:',booksError);
+   return res.status(500).json({ error:"failed getting books of order" });
+   }
   
     let totaleprice=Uorder[0].totaleprice;
-    console.log(newOrder);
+    console.log(booksData);
 
-    return res.status(201).json({totaleprice,data:newOrder});
-  }catch(err){
-    console.log(err);
-  }
+    return res.status(201).json({totaleprice,data:booksData});
+  
 
    
    }
