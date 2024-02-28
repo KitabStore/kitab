@@ -336,6 +336,7 @@ module.exports.delete_from_cart=async (req,res)=>{
    .select('*')
    .eq('orderid',currentorder);
 
+
    //delete item from orderbook
    let {data,error:errorob} =await supabase
                .from('BookOrder')
@@ -365,7 +366,28 @@ module.exports.delete_from_cart=async (req,res)=>{
      console.error('Error updating in order table:', error);
      return res.status(500).json({ error:"failed deleting from your order" });
 }
-   return res.status(201).json({order:Uorder});
+
+  //new order item from orderbook
+  try{
+    let {data:newOrder,error:errornew} =await supabase
+    .from('BookOrder')
+    .select('*')
+    .eq('orderid',currentorder);
+  
+    if (errornew) {
+      console.error('Error sending order in order table:', errornew);
+      return res.status(500).json({ error:"failed sending the order" });
+  }
+  
+    let totaleprice=Uorder[0].totaleprice;
+    console.log(newOrder);
+
+    return res.status(201).json({totaleprice,data:newOrder});
+  }catch(err){
+    console.log(err);
+  }
+
+   
    }
    
    console.log("current order:",currentorder);

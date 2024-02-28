@@ -80,6 +80,6 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/getcart 
 credentials: 'include'
-
+  
 ###
 GET http://localhost:8080/cart/0735211299
