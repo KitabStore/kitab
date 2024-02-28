@@ -10,7 +10,7 @@ import apiUrl from '../apiConfig';
 const Cart = () => {
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
-  const {number, setNumber} = useState();
+  const {number, setNumber} = useState(2);
   let sub = 0;
   const delivery = 5;
 
@@ -19,7 +19,7 @@ const Cart = () => {
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
-      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); setNumber(data.data.length); console.log("Number: ", number); console.log("books" , books);; return data;})
+      .then(data => {console.log("in fetching cart", data.data); setBooks(data.data); console.log("Number: ", number); console.log("books" , books);; return data;})
       /*.catch(err => {
         console.log(err);
       })*/
@@ -73,7 +73,7 @@ const Cart = () => {
             <div className='col-2 col-md-2'>Remove</div>
             <div className='d-none d-md-block col-md-1'></div>
           </div>
-          {books?.map(book => {
+          {books.map(book => {
             sub = sub + (book.quantity * book.price);
             return(
               <div className='tItems row d-flex align-items-center py-3' key={book.isbn}>
