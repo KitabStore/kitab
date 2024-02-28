@@ -1,0 +1,50 @@
+[
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "isbn": "0451524934",
+      "quantity": 8,
+      "price": 12.50,
+      "category": "fiction"
+    },
+    {
+      "title": "A Brief History of Time",
+      "author": "Stephen Hawking",
+      "isbn": "9780553380163",
+      "quantity": 12,
+      "price": 16.50,
+      "category": "non-fiction"
+    },
+    {
+      "title": "A Game of Thrones",
+      "author": "George R.R. Martin",
+      "isbn": "0553593714",
+      "quantity": 24,
+      "price": 23.50,
+      "category": "fiction"
+    },
+    {
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "isbn": "0735211299",
+      "quantity": 22,
+      "price": 16.75,
+      "category": "self-help"
+    },
+    {
+      "title": "Awaken the Giant Within",
+      "author": "Tony Robbins",
+      "isbn": "0743409388",
+      "quantity": 16,
+      "price": 21.99,
+      "category": "self-help"
+    },
+    {
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "isbn": "0060850523",
+      "quantity": 12,
+      "price": 15.50,
+      "category": "fiction"
+    }
+]

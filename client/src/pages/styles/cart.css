@@ -1,0 +1,17 @@
+.bi-trash-fill, .title, .tItems{
+    transition: all 0.3s;
+}
+
+.bi-trash-fill:hover, .title:hover{
+    cursor: pointer;
+    color: gray;
+}
+
+.tItems:hover{
+    background-color: rgb(39, 39, 39);
+}
+
+.tItems > div, .tHead > div{
+    padding: 5px;
+    text-align: center;
+}
