@@ -10,22 +10,22 @@ import apiUrl from '../apiConfig';
 const Cart = () => {
   const {signedIn} = useSignedIn();
   const navigate = useNavigate();
-  let sub = 0;
+  const [sub, setSub] = useState(0);
   const delivery = 5;
 
-  const {books, setBooks} = useState({});
+  const [books, setBooks] = useState([]);
+  const [size, setSize] = useState(0);
 
   useEffect(() => {
     fetch(`${apiUrl}/getcart`)
       .then(res => res.json())
       .then(data => {
-          console.log("in fetching cart", data);
-          setBooks(data);
-          console.log("books " , books);
-          console.log("Books.length ", books.legth); 
+          console.log("in fetching cart", data.data);
+          setBooks(data.data);
+          console.log("books ", books);
           return data;
       })
-      .catch(error => console.log("in Cart ",error))
+      .catch(error => console.error("in cart", error))
   },[])
 
   const itemDelete = id => {
@@ -38,12 +38,21 @@ const Cart = () => {
       .catch(err => {console.log(err); toast.error(err)});
   }
 
-
   useEffect(() => {
     if(!signedIn){
       navigate('/');
     }
   }, [navigate, signedIn])
+
+  useEffect(() => {
+    let total = 0;
+    books.forEach(book => {
+      total += book.quantity * book.price;
+    });
+    setSub(total);
+    setSize(books.length);
+    console.log("books length ", size);
+  }, [books]);
 
   // Modal Components
   const [show, setShow] = useState(false);
@@ -66,9 +75,9 @@ const Cart = () => {
   return (
     <div className='d-flex flex-column align-items-center my-5 mx-2'>
         <div className='mt-5 p-3 mb-5 h1'>
-           Your Cart
+           Your Cart {size <= 0 ? 'is Empty' : `[${size} item${size > 1? 's' : ''}]`}
         </div>
-        
+        {size > 0 ?
         <div className='container container-fluid p-3 border border-dark rounded'>
           <div className='tHead row  border-dark border-bottom pb-2'>
             <div className='d-none d-md-block col-md-1'></div>
@@ -79,16 +88,16 @@ const Cart = () => {
             <div className='col-2 col-md-2'>Remove</div>
             <div className='d-none d-md-block col-md-1'></div>
           </div>
-          {books?.map(book => {
-            sub = sub + (book.quantity * book.price);
+          {
+          books?.map(book => {
             return(
               <div className='tItems row d-flex align-items-center py-3' key={book.isbn}>
                 <div className='col-md-1'></div>
                 <div className='col-3'>{itemDisplay(book)}</div>
                 <div className='col-2'>{book.price}$</div>
                 <div className='col-2'>{book.quantity}</div>
-                <div className='col-2'>{book.quantity * book.price} $</div>
-                <div className='col-2'><i class="bi bi-trash-fill h6" onClick={() => itemDelete(book.isbn)} title='Remove from Cart'></i></div>
+                <div className='col-2'>{book.quantity * book.price}$</div>
+                <div className='col-2'><i className="bi bi-trash-fill h6" onClick={() => itemDelete(book.isbn)} title='Remove from Cart'></i></div>
                 <div className='col-1'></div>
               </div>
             )
@@ -112,7 +121,9 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        
+        :
+        <div className='my-3'></div>
+        }
         <Order show={show} total={(sub + delivery).toFixed(2)} handleClose={handleClose} books={books}></Order>
     </div>
   )
