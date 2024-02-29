@@ -17,7 +17,10 @@ const Cart = () => {
   const [size, setSize] = useState(0);
 
   useEffect(() => {
-    fetch(`${apiUrl}/getcart`)
+    fetch(`${apiUrl}/getcart`,{
+      method: "GET",
+      credentials: "include"
+    })
       .then(res => res.json())
       .then(data => {
           console.log("in fetching cart", data.data);
@@ -29,11 +32,14 @@ const Cart = () => {
   },[])
 
   const itemDelete = id => {
-    fetch(`${apiUrl}/cart/${id}`)
+    fetch(`${apiUrl}/cart/${id}`,{
+      method: "GET",
+      credentials: "include"
+    })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setBooks(data.order);
+        console.log(data.data);
+        setBooks(data.data);
         return data;})
       .catch(err => {console.log(err); toast.error(err)});
   }

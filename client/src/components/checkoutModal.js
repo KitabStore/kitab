@@ -13,11 +13,11 @@ const checkoutModal = (props) => {
         >
         <Modal.Header
             className='bg-dark' closeButton>
-          <Modal.Title>Your Order: books[0].orderid</Modal.Title>
+          <Modal.Title>Your Order: {books[0]?.orderid}</Modal.Title>
         </Modal.Header>
         <Modal.Body
             className='bg-dark'>
-          {props.books.map((book, index) =>{
+          {props.books?.map((book, index) =>{
             return(
               <p key={book.isbn}>{index}. {book.title}</p>
             )
