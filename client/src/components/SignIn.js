@@ -14,7 +14,6 @@ const SignIn = (props) => {
       e.preventDefault();
       const username = ref1.current.value;
       const password = ref2.current.value;
-      console.log(username, password)
       fetch(`${apiURL}/login`, {
         method: "POST",
         credentials: "include",

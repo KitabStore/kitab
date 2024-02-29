@@ -13,7 +13,7 @@ const checkoutModal = (props) => {
         >
         <Modal.Header
             className='bg-dark' closeButton>
-          <Modal.Title>Your Order: {props.books[0]?.orderid}</Modal.Title>
+          <Modal.Title>Your Order ID: {props.books[0]?.orderid}</Modal.Title>
         </Modal.Header>
         <Modal.Body
             className='bg-dark'>

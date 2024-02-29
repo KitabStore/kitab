@@ -25,17 +25,13 @@ const Cart = () => {
       .then(data => {
           console.log("in fetching cart", data.data);
           setBooks(data.data);
-          console.log("books ", books);
           return data;
       })
       .catch(error => console.error("in cart", error))
   },[])
 
   const itemDelete = id => {
-    fetch(`${apiUrl}/cart/${id}`,{
-      method: "GET",
-      credentials: "include"
-    })
+    fetch(`${apiUrl}/cart/${id}`)
       .then(res => res.json())
       .then(data => {
         console.log(data.data);

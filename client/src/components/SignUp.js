@@ -19,7 +19,6 @@ const SignUp = (props) => {
     const location = ref3.current.value;
     const email = ref4.current.value;
     const password = ref5.current.value;
-    console.log(username, phone, location, email, password)
     fetch(`${apiURL}/signup`, {
       method: "POST",
       headers: {
