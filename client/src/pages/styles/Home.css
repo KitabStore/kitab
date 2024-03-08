@@ -9,10 +9,37 @@
   div{
     user-select: none;
   }
-
+  .buy{
+    transition: all 1s ease-out;
+  }
+  .inv-buy{
+    transform: translateY(40px);
+    filter: blur(20px);
+    opacity: 0%;
+  }
   .category :hover{
     cursor: pointer;
     user-select: none;
+  }
+  .fiction{
+    transition: all 1s ease-out;
+  }
+  .non-fiction{
+    transition: all 1.5s ease-out;
+  }
+  .self-help{
+    transition: all 2s ease-out;
+  }
+
+  .inv-category{
+    filter: blur(5px);
+    opacity: 0%;
+    transform: translateY(100px);
+  }
+  .v-category{
+    filter: blur(0);
+    opacity: 100%;
+    transform: translateY(0);
   }
 
   #about{
@@ -32,35 +59,7 @@
   .fadeIn{
     animation: fadeIn 0.5 ease-out none both;
   }
-
-  @keyframes slidedown {
-    from{
-      transform: translateY(-40px);
-      opacity: 0%;
-    }
-    to{
-      transform: translateY(0);
-      opacity: 100%;
-    }
-  }
-  .animate-down1{
-    animation-name: slidedown;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-  }
-  .animate-down2{
-    opacity: 0;
-    animation-name: slidedown;
-    animation-duration: 1s;
-    animation-delay: 0.2s;
-    animation-fill-mode: both;
-  }
-  .animate-down3{
-    animation-name: slidedown;
-    animation-duration: 1s;
-    animation-delay: 0.4s;
-    animation-fill-mode: both;
-  }
+  
   @keyframes jiggle {
     from{
       transform: translateY(-5px);
@@ -80,20 +79,18 @@
     animation-timing-function: ease-in-out;
     animation-fill-mode: both;
   }
-  @keyframes slideup {
-    from{
-      transform: translateY(100px);
-      opacity: 0%;
-    }
-    to{
-      transform: translateY(0);
-      opacity: 100%;
-    }
+  .about{
+    transition: all 0.3s;
   }
-  .animate-up{
-    animation-name: slideup;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+  .inv-about{
+    transform: translateY(100px);
+    filter: blur(5px);
+    opacity: 0%;
+  }
+  .v-about{
+    transform: translateY(0);
+    filter: blur(0);
+    opacity: 100%;
   }
   .go-top{
     position: sticky;

@@ -52,14 +52,14 @@ const Footer = () => {
                 <form id="contact" ref={form} onSubmit={sendEmail} className="email-form">
                     <div className="row">
                         <div className="col-md-6 form-group">
-                            <input ref={ref1} type="text" name="from_name" className={`form-control ${inView1 && 'animate-falldown'}`} id="name" placeholder="Name" required />
+                            <input ref={ref1} type="text" name="from_name" className={`form-control form ${inView1 ? 'v-form' : 'inv-form'}`} id="name" placeholder="Name" required />
                         </div>
                         <div className="col-md-6 form-group mt-3 mt-md-0">
-                            <input ref={ref2} type="email" className={`form-control ${inView2 && 'animate-falldown'}`} name="from_email" id="email" placeholder="Email" required />
+                            <input ref={ref2} type="email" className={`form-control form ${inView2 ? 'v-form' : 'inv-form'}`} name="from_email" id="email" placeholder="Email" required />
                         </div>
                     </div>
                     <div className="form-group mt-3">
-                        <textarea ref={ref3} className={`form-control ${inView3 && 'animate-falldown'}`} name="message" rows="8" placeholder="Message" required></textarea>
+                        <textarea ref={ref3} className={`form-control form ${inView3 ? 'v-form' : 'inv-form'}`} name="message" rows="8" placeholder="Message" required></textarea>
                     </div>
                     <div className="text-center"><button className="btn btn-dark mt-3" type="submit">Send Message</button></div>
                 </form>

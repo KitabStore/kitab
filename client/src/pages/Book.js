@@ -72,7 +72,7 @@ const Book = (props) => {
                     <div className='fs-4 mt-2'><span className='text-dark-emphasis'>Price:</span> {item.price}$</div>
                     <form className="input-group mt-2">
                         <input type="number" className="form-control col-6" min="1" max={item.quantity} id="nbr" value={nbr} onChange={(e) => setNbr(e.target.value)} required/>
-                        <input className='btn btn-submit border roundede-5' value="Add to Cart" type='submit' title='Add to Cart' onClick={(e) => {e.preventDefault()}}/>
+                        <input className='btn btn-submit border roundede-5' value="Add to Cart" type='submit' title='Add to Cart' disabled={item.quantity < nbr} onClick={(e) => {e.preventDefault()}}/>
                     </form>
                 </div>
             </div>

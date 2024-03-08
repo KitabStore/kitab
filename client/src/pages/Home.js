@@ -39,17 +39,21 @@ const Home = () => {
                 </div>
             </div>
             <div className="container-fluid text-center p-3 bg-dark border-top border-bottom">
-                <div className="col d-flex flex-columns justify-content-center align-items-center p-5">
-                    <div className='mt-3 text-center container-fluid'>
+                <div className="col d-flex flex-columns justify-content-center align-items-center p-4">
+                    <div className='my-3 text-center container-fluid'>
                         <i className="bi bi-quote h1"></i><br/>
                             {loading ?   
-                                <div className="card-text container text-center quote-Load placeholder-glow">
+                                <div className="row card-text container quote-Load placeholder-glow rounded">
                                     <span className="placeholder col-12 placeholder-lg mb-2"></span>
+                                    <span className=" col-2 mb-2"></span>
                                     <span className="placeholder col-8 placeholder-lg mb-2"></span>
-                                    <span className="placeholder col-6 placeholder-lg"></span>
+                                    <span className="col-2 mb-2"></span>
+                                    <span className="col-4 mb-2"></span>
+                                    <span className="placeholder col-4 placeholder-lg"></span>
+                                    <span className="col-4 mb-2"></span>
                                 </div>
                                 : 
-                                <p className='h2 '>
+                                <p className='h2 text-center'>
                                     <TypeAnimation
                                         sequence={['', 0, quote[0].quote, 1000]}
                                         speed={50}
@@ -58,7 +62,7 @@ const Home = () => {
                                 </p>
                             }
                         <i className="bi bi-quote h1"></i>
-                        <p className='h5 text-center'>
+                        <p className='h5 mt-3 text-center'>
                             {loading ?
                                 <div className="card-text quote-Load placeholder-glow">
                                     <span className="placeholder col-3 placeholder-md"></span>
@@ -75,34 +79,34 @@ const Home = () => {
                 </div>
             </div>
             <div ref={ref4} className='container-fluid text-center pt-4' >
-                <div className={`row mb-4 ${inView4 && 'animate-down1'}`}>
+                <div className={`row mb-4 buy ${inView4?  'v-category' : 'inv-buy'}`}>
                     <div className="card text-center bg-transparent text-white">
                         <div className="card-header h2 fw-bold ">
                             Kitab Store
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">You Can Order Now</h5>
-                            <p className="card-text h3 mx-5 pe-4">يمكنك الطلب الان</p>
+                            <p className="card-text h3 mx-5">يمكنك الطلب الان</p>
                                 <div className='animate-arrow'><i className="bi bi-arrow-bar-down h1"></i></div>
                         </div>
                     </div>
                 </div>
                 <div className='row p-2 p-md-0 mx-md-1 mx-lg-0 gap-3 gap-lg-5 justify-content-center mb-5'>
-                    <div ref={ref1} className={`col col-12 col-lg-4 rounded-2 bg-dark  category ${inView1 && 'animate-down1'}`} onClick={() => navigate('/products', {state: {cat: 'fiction'}})}>
+                    <div ref={ref1} className={`col col-12 col-md-4 col-lg-3 rounded-2 bg-dark  category fiction ${inView1? 'v-category' : 'inv-category'}`} onClick={() => navigate('/products', {state: {cat: 'fiction'}})}>
                         <div className='d-flex justify-content-center align-items-center border-bottom gap-2 text-bold'><div className='fs-2'>Fiction</div><i className="bi bi-arrow-right white"></i></div>
                         <p className='mt-2'>Immerse yourself in captivating worlds of imagination and storytelling.</p>
                     </div>
-                    <div ref={ref2} className={`col col-12 col-lg-4 rounded-2 bg-dark  category ${inView2 && 'animate-down2'}`} onClick={() => navigate('/products', {state: {cat: 'non-fiction'}})}>
+                    <div ref={ref2} className={`col col-12 col-md-4 col-lg-5 rounded-2 bg-dark  category non-fiction ${inView2? 'v-category' : 'inv-category'}`} onClick={() => navigate('/products', {state: {cat: 'non-fiction'}})}>
                     <div className='d-flex justify-content-center align-items-center border-bottom gap-1 text-bold '><div className='fs-2 no-wrap'>Non-Fiction</div><i className="bi bi-arrow-right white"></i></div>
                         <p className='mt-2'>Explore the realms of reality with informative and factual narratibves.</p>
                     </div>
-                    <div ref={ref3} className={`col col-12 col-lg-3 rounded-2 bg-dark  category ${inView3 && 'animate-down3'}`} onClick={() => navigate('/products', {state: {cat: 'self-help'}})}>
+                    <div ref={ref3} className={`col col-12 col-md-8 col-lg-3 rounded-2 bg-dark  category self-help ${inView3? 'v-category' : 'inv-category'}`} onClick={() => navigate('/products', {state: {cat: 'self-help'}})}>
                     <div className='d-flex justify-content-center align-items-center border-bottom gap-2 text-bold '><div className='fs-2 no-wrap'>Self-Help</div><i className="bi bi-arrow-right white"></i></div>
                         <p className='mt-2'>Empower your personal growth with practical insights and guidance.</p>
                     </div>
                 </div>
                 <div id="about" className="text-center bg-dark p-2 mb-3">
-                    <div ref={ref} className={`col d-flex flex-column justify-content-center align-items-center gap-3 p-3 ${inView && 'animate-up'}`}>
+                    <div ref={ref} className={`col d-flex flex-column justify-content-center align-items-center gap-3 p-3 about ${inView ? 'v-about' : 'inv-about'}`}>
                         <div>
                                 <h1>About Us</h1>
                         </div>
