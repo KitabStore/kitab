@@ -62,7 +62,7 @@ const Navbar = () => {
                         <button type="button" className="btn-close color-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body d-flex justify-content-center align-items-center flex-column flex-md-row">
-                        <ul className="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 gap-3 pe-3">
+                        <ul className="navbar-nav justify-content-center align-items-md-center fs-5 flex-grow-1 gap-3 pe-3">
                             <li className="nav-item">
                                 <Link className="link text-decoration-none" to='/'>Home</Link>
                             </li>

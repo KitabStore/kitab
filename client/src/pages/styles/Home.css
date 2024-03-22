@@ -105,3 +105,6 @@
   .quote-load{
     height: 90vw;
   }
+  .offcanvas{
+    max-width: 80%;
+  }

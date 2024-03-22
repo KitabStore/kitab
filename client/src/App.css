@@ -26,9 +26,13 @@
 
 .link{
   color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: all ease-in 0.3s;
 }
 .link:hover{
-  color: gray;
+  color: black;
+  background-color: white;
 }
 
 input, textarea{
